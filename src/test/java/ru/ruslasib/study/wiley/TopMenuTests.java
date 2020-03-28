@@ -1,22 +1,24 @@
 package ru.ruslasib.study.wiley;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TopMenuTests extends TestBase {
 
   @Test
-  public void testWhoWeServeMenuExsists() {
-    Assert.assertEquals("WHO WE SERVE", homePage.whoWeServeName());
+  public void testWhoWeServeMenuExsist() {
+    assertThat("WHO WE SERVE", equalTo(homePage.whoWeServeName()));
   }
 
   @Test
-  public void testSubjectsMenuExists() {
-    Assert.assertEquals("SUBJECTS", homePage.subjectsName());
+  public void testSubjectsMenuExist() {
+    assertThat("SUBJECTS", equalTo(homePage.subjectsName()));
   }
 
   @Test
-  public void testAboutMenuExists() {
-    Assert.assertEquals("ABOUT", homePage.aboutName());
+  public void testAboutMenuExist() {
+    assertThat("ABOUT", equalTo(homePage.aboutName()));
   }
 }

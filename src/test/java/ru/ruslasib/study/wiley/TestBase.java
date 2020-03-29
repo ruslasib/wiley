@@ -22,7 +22,7 @@ public class TestBase {
     wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
-    wd.findElement(By.xpath("//*[@id=\"country-location-form\"]/div[3]/button[2]")).click();
+    wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
     homePage = new HomePage(wd);
   }
 

@@ -13,12 +13,16 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
   static WebDriver wd;
   static HomePage homePage;
+  /**
+   * operation system may be:
+   * IOS
+   * WINDOWS
+   */
+  private static String operationSystem = "IOS";
 
   @BeforeClass
   public static void setUp() {
-    String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\java\\ru\\ruslasib\\study\\wiley\\resourses\\chromedriver.exe";
-    System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-    wd = new ChromeDriver();
+    wd = defineDriver(operationSystem);
     wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
@@ -29,6 +33,18 @@ public class TestBase {
   @AfterClass
   public static void tearDown() {
     wd.quit();
+  }
+
+  public static WebDriver defineDriver(String operationSystem) {
+    String chromeDriverPath = "";
+    if (operationSystem.equals("WINDOWS")) {
+      chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\java\\ru\\ruslasib\\study\\wiley\\resourses\\chromedriver.exe";
+      System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+    } else if (operationSystem.equals("IOS")) {
+      chromeDriverPath = System.getProperty("user.dir") + "/src/test/java/ru/ruslasib/study/wiley/resourses/chromedriver_mac64";
+      System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+    }
+    return new ChromeDriver();
   }
 
   public boolean isElementPresent(By locator) {

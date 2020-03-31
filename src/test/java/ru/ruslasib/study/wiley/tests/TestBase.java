@@ -21,15 +21,17 @@ public class TestBase {
    * IOS
    * WINDOWS
    */
-  private static String operationSystem = "IOS";
+  private static String operationSystem = "WINDOWS";
 
   @BeforeClass
-  public static void setUp() {
+  public static void setUp() throws InterruptedException {
     wd = defineDriver(operationSystem);
     wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
+    // close modal window
     wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
+    Thread.sleep(2000);
     homePage = new HomePage(wd);
   }
 

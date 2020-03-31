@@ -38,11 +38,14 @@ public class StudentsTests extends TestBase {
         System.out.println("Start scrolling...");
         Point hoverItem = wd.findElement(By.xpath("/html/body/main/div[2]/div/div[3]/div/p[15]/a")).getLocation();
         System.out.println("1...");
-        ((JavascriptExecutor)wd).executeScript("return window.title;");
-        System.out.println("2...");
-        Thread.sleep(6000);
+        JavascriptExecutor jse = (JavascriptExecutor) wd;
+//        jse.executeScript("return window.title;");
+//        System.out.println("2...");
+//        Thread.sleep(6000);
         System.out.println("3...");
-        ((JavascriptExecutor)wd).executeScript("window.scrollBy(0,"+(hoverItem.getY())+");");
+        jse.executeScript("window.scrollBy(0,"+(hoverItem.getY())+");");
+        //
+        Thread.sleep(6000);
         System.out.println("Coordinates: " + hoverItem.getY());
         System.out.println("Stop scrolling...");
         assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));

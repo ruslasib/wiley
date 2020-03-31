@@ -1,5 +1,6 @@
 package ru.ruslasib.study.wiley.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,23 +17,24 @@ public class StudentsPage extends PageObject {
     }
 
     @FindBy(xpath = "/html/body/main/div[2]/div/div[1]/ul/li[2]")
-    private WebElement header;
+    public WebElement header;
 
     public String headerName() {
         return header.getText();
     }
 
     @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a")
-    private WebElement learnMoreOfBeYorBestSectionLink;
+    public WebElement learnMoreOfBeYorBestSectionLink;
 
     public String learnMoreOfBeYorBestSectionLink() {
         return learnMoreOfBeYorBestSectionLink.getText();
     }
 
-    @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a/span/span/text()")
-    private WebElement learnMoreOfBeYorBestSectionName;
+    @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a/span/span")
+    public WebElement learnMoreOfBeYorBestSectionName;
 
     public String learnMoreOfBeYorBestSectionName() {
+        System.out.println("Web element string: " + learnMoreOfBeYorBestSectionName);
         return learnMoreOfBeYorBestSectionName.getText();
     }
 }

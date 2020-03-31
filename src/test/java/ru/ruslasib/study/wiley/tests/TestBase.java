@@ -21,7 +21,7 @@ public class TestBase {
    * IOS
    * WINDOWS
    */
-  private static String operationSystem = "WINDOWS";
+  private static String operationSystem = "IOS";
 
   @BeforeClass
   public static void setUp() throws InterruptedException {
@@ -33,6 +33,7 @@ public class TestBase {
     wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
     Thread.sleep(2000);
     homePage = new HomePage(wd);
+    studentsPage = new StudentsPage(wd);
   }
 
   @AfterClass

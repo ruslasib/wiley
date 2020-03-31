@@ -19,17 +19,18 @@ public class StudentsTests extends TestBase {
     }
 
     @Test
-    public void testStudentsPageUrl() throws InterruptedException {
+    public void testStudentsPageUrl() {
         assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
     }
 
     @Test
     public void testHeaderName() {
-        assertThat(studentsPage.headerName(), equalTo("Students1"));
+        assertThat(studentsPage.headerName(), equalTo("Students"));
     }
 
     @Test
     public void testLearnMoreExist() throws InterruptedException {
+        studentsPage.scrollDownTo(studentsPage.learnMoreOfBeYorBestSectionName);
         assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), equalTo("Learn More"));
     }
 
@@ -48,6 +49,7 @@ public class StudentsTests extends TestBase {
         Thread.sleep(6000);
         System.out.println("Coordinates: " + hoverItem.getY());
         System.out.println("Stop scrolling...");
+        System.out.println("Extracted data: " + studentsPage.learnMoreOfBeYorBestSectionName());
         assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
     }
 }

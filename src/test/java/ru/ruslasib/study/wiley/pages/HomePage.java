@@ -3,7 +3,6 @@ package ru.ruslasib.study.wiley.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -42,6 +41,15 @@ public class HomePage extends PageObject {
 
   @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li")
   private WebElement whoWeServeSubmenuItems;
+
+  @FindBy(linkText = "Students")
+  private WebElement students;
+
+  public void clickStudents() {
+    System.out.println("Students click starts");
+    students.click();
+    System.out.println("Students click finishes");
+  }
 
   public List<String> whoWeServeSubmenuItemsNames() {
     List<WebElement> elements = wd.findElements(By.xpath("//*[@id=\"Level1NavNode1\"]/ul/li/a"));

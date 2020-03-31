@@ -2,9 +2,6 @@ package ru.ruslasib.study.wiley.tests;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -30,26 +27,13 @@ public class StudentsTests extends TestBase {
 
     @Test
     public void testLearnMoreExist() throws InterruptedException {
-        studentsPage.scrollDownTo(studentsPage.learnMoreOfBeYorBestSectionName);
-        assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), equalTo("Learn More"));
+        studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
+        assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), containsString("Learn More"));
     }
 
     @Test
     public void testLearnMoreLink() throws InterruptedException {
-        System.out.println("Start scrolling...");
-        Point hoverItem = wd.findElement(By.xpath("/html/body/main/div[2]/div/div[3]/div/p[15]/a")).getLocation();
-        System.out.println("1...");
-        JavascriptExecutor jse = (JavascriptExecutor) wd;
-//        jse.executeScript("return window.title;");
-//        System.out.println("2...");
-//        Thread.sleep(6000);
-        System.out.println("3...");
-        jse.executeScript("window.scrollBy(0,"+(hoverItem.getY())+");");
-        //
-        Thread.sleep(6000);
-        System.out.println("Coordinates: " + hoverItem.getY());
-        System.out.println("Stop scrolling...");
-        System.out.println("Extracted data: " + studentsPage.learnMoreOfBeYorBestSectionName());
+        studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
         assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
     }
 }

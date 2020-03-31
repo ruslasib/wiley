@@ -11,30 +11,33 @@ public class StudentsPage extends PageObject {
         super(wd);
     }
 
-    private String url = "https://www.wiley.com/en-ru/students";
+    private String url = "https://www.wiley.com/en-us/students";
     public String url() {
         return url;
     }
 
     @FindBy(xpath = "/html/body/main/div[2]/div/div[1]/ul/li[2]")
-    public WebElement header;
+    private WebElement header;
 
     public String headerName() {
         return header.getText();
     }
 
     @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a")
-    public WebElement learnMoreOfBeYorBestSectionLink;
+    private WebElement learnMoreOfBeYorBestSectionLink;
 
     public String learnMoreOfBeYorBestSectionLink() {
-        return learnMoreOfBeYorBestSectionLink.getText();
+        return learnMoreOfBeYorBestSectionLink.getAttribute("href");
     }
 
     @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a/span/span")
-    public WebElement learnMoreOfBeYorBestSectionName;
+    private WebElement learnMoreOfBeYorBestSectionName;
 
     public String learnMoreOfBeYorBestSectionName() {
-        System.out.println("Web element string: " + learnMoreOfBeYorBestSectionName);
         return learnMoreOfBeYorBestSectionName.getText();
+    }
+
+    public By learnMoreOfBeYorBestSectionNameLocator() {
+        return getLocator(learnMoreOfBeYorBestSectionName);
     }
 }

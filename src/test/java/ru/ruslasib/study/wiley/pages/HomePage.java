@@ -10,53 +10,51 @@ import java.util.List;
 
 public class HomePage extends PageObject {
 
-  public HomePage(WebDriver wd) {
-    super(wd);
-  }
-
-  @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[1]")
-  public WebElement whoWeServeMenu;
-
-  public String whoWeServeName() {
-    return whoWeServeMenu.getText();
-  }
-
-  public void clickWhoWeServe() {
-    whoWeServeMenu.click();
-  }
-
-  @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[2]/a")
-  public WebElement subjectsMenu;
-
-  public String subjectsName() {
-    return subjectsMenu.getText();
-  }
-
-  @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[4]/a")
-  public WebElement aboutMenu;
-
-  public String aboutName() {
-    return aboutMenu.getText();
-  }
-
-  @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li")
-  public WebElement whoWeServeSubmenuItems;
-
-  @FindBy(linkText = "Students")
-  public WebElement students;
-
-  public void clickStudents() {
-    System.out.println("Students click starts");
-    students.click();
-    System.out.println("Students click finishes");
-  }
-
-  public List<String> whoWeServeSubmenuItemsNames() {
-    List<WebElement> elements = wd.findElements(By.xpath("//*[@id=\"Level1NavNode1\"]/ul/li/a"));
-    List<String> elementsNames = new ArrayList<String>();
-    for (WebElement element : elements) {
-      elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));
+    public HomePage(WebDriver wd) {
+        super(wd);
     }
-    return elementsNames;
-  }
+
+    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[1]")
+    private WebElement whoWeServeMenu;
+
+    public String whoWeServeName() {
+        return whoWeServeMenu.getText();
+    }
+
+    public void clickWhoWeServe() {
+        whoWeServeMenu.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[2]/a")
+    private WebElement subjectsMenu;
+
+    public String subjectsName() {
+        return subjectsMenu.getText();
+    }
+
+    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[4]/a")
+    private WebElement aboutMenu;
+
+    public String aboutName() {
+        return aboutMenu.getText();
+    }
+
+    @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li")
+    private WebElement whoWeServeSubmenuItems;
+
+    @FindBy(linkText = "Students")
+    private WebElement students;
+
+    public void clickStudents() {
+        students.click();
+    }
+
+    public List<String> whoWeServeSubmenuItemsNames() {
+        List<WebElement> elements = wd.findElements(By.xpath("//*[@id=\"Level1NavNode1\"]/ul/li/a"));
+        List<String> elementsNames = new ArrayList<String>();
+        for (WebElement element : elements) {
+            elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));
+        }
+        return elementsNames;
+    }
 }

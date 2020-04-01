@@ -1,7 +1,7 @@
 package ru.ruslasib.study.wiley.tests;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,7 +20,7 @@ public class StudentsTests extends TestBase {
         assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
     }
 
-    @Test
+    @org.testng.annotations.Test
     public void testHeaderName() {
         assertThat(studentsPage.headerName(), equalTo("Students"));
     }

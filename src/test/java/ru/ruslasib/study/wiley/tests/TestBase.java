@@ -1,18 +1,27 @@
 package ru.ruslasib.study.wiley.tests;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import ru.ruslasib.study.wiley.pages.HomePage;
 import ru.ruslasib.study.wiley.pages.StudentsPage;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
+  Logger log = LoggerFactory.getLogger(TestBase.class);
+
   static WebDriver wd;
   static HomePage homePage;
   static StudentsPage studentsPage;
@@ -23,7 +32,7 @@ public class TestBase {
    */
   private static String operationSystem = "IOS";
 
-  @BeforeClass
+  @BeforeSuite
   public static void setUp() throws InterruptedException {
     wd = defineDriver(operationSystem);
     wd.manage().window().maximize();
@@ -36,7 +45,7 @@ public class TestBase {
     studentsPage = new StudentsPage(wd);
   }
 
-  @AfterClass
+  @AfterSuite(alwaysRun = true)
   public static void tearDown() {
     wd.quit();
   }
@@ -51,6 +60,16 @@ public class TestBase {
       System.setProperty("webdriver.chrome.driver", chromeDriverPath);
     }
     return new ChromeDriver();
+  }
+
+  @BeforeMethod
+  public void logStart(Method m) {
+    log.info("Start test " + m.getName());
+  }
+
+  @AfterMethod(alwaysRun = true)
+  public void logStop(Method m) {
+    log.info("Stop test " + m.getName());
   }
 
   public boolean isElementPresent(By locator) {

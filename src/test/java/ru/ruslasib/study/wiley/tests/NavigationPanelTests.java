@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 //TODO This class need to be reworked
-public class NavigationPanelTest extends TestBase {
+public class NavigationPanelTests extends TestBase {
 
   @Test
   public void testWhoWeServeOfNavigationPanel() {

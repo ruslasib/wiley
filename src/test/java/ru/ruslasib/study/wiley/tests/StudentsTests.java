@@ -16,7 +16,7 @@ public class StudentsTests extends TestBase {
   }
 
   @Test
-  public void testStudentsPageUrl() {
+  public void testPageUrl() {
     assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
   }
 

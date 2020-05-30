@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import ru.ruslasib.study.wiley.pages.EducationPage;
 import ru.ruslasib.study.wiley.pages.HomePage;
 import ru.ruslasib.study.wiley.pages.StudentsPage;
 
@@ -21,6 +22,7 @@ public class TestBase {
   static WebDriver wd;
   static HomePage homePage;
   static StudentsPage studentsPage;
+  static EducationPage educationPage;
   /**
    * operation system may be:
    * IOS
@@ -40,6 +42,7 @@ public class TestBase {
     Thread.sleep(2000);
     homePage = new HomePage(wd);
     studentsPage = new StudentsPage(wd);
+    educationPage = new EducationPage(wd);
   }
 
   @AfterSuite(alwaysRun = true)

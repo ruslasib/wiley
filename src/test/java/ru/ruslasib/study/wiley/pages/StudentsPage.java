@@ -30,15 +30,15 @@ public class StudentsPage extends PageObject {
     return header.getText();
   }
 
-  public String learnMoreOfBeYorBestSectionLink() {
+  public String learnMoreOfBeYourBestSectionLink() {
     return learnMoreOfBeYorBestSectionLink.getAttribute("href");
   }
 
-  public String learnMoreOfBeYorBestSectionName() {
+  public String learnMoreOfBeYourBestSectionName() {
     return learnMoreOfBeYorBestSectionName.getText();
   }
 
-  public By learnMoreOfBeYorBestSectionNameLocator() {
-    return getLocator(learnMoreOfBeYorBestSectionName);
+  public By learnMoreOfBeYourBest() {
+    return locatorOf(learnMoreOfBeYorBestSectionName);
   }
 }

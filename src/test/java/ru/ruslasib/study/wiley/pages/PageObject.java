@@ -19,7 +19,7 @@ public class PageObject {
     Thread.sleep(1000);
   }
 
-  public By getLocator(WebElement element) {
+  public By locatorOf(WebElement element) {
     By by = null;
 
     String[] elementToArray = element.toString()

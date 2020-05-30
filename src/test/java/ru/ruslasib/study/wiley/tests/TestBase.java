@@ -14,14 +14,10 @@ import ru.ruslasib.study.wiley.pages.HomePage;
 import ru.ruslasib.study.wiley.pages.StudentsPage;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-  Logger log = LoggerFactory.getLogger(TestBase.class);
-
   static WebDriver wd;
   static HomePage homePage;
   static StudentsPage studentsPage;
@@ -30,13 +26,14 @@ public class TestBase {
    * IOS
    * WINDOWS
    */
-  private static String operationSystem = "IOS";
+  private static String operationSystem = "WINDOWS";
+  Logger log = LoggerFactory.getLogger(TestBase.class);
 
   @BeforeSuite
   public static void setUp() throws InterruptedException {
     wd = defineDriver(operationSystem);
     wd.manage().window().maximize();
-    wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
     // close modal window
     wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();

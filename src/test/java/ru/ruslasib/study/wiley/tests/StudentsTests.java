@@ -9,31 +9,31 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StudentsTests extends TestBase {
 
-    @BeforeClass
-    public static void prepare()  {
-        homePage.clickWhoWeServe();
-        homePage.clickStudents();
-    }
+  @BeforeClass
+  public static void prepare() {
+    homePage.clickWhoWeServe();
+    homePage.clickStudents();
+  }
 
-    @Test
-    public void testStudentsPageUrl() {
-        assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
-    }
+  @Test
+  public void testStudentsPageUrl() {
+    assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
+  }
 
-    @org.testng.annotations.Test
-    public void testHeaderName() {
-        assertThat(studentsPage.headerName(), equalTo("Students"));
-    }
+  @Test
+  public void testHeaderName() {
+    assertThat(studentsPage.headerName(), equalTo("Students"));
+  }
 
-    @Test
-    public void testLearnMoreExist() throws InterruptedException {
-        studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-        assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), containsString("Learn More"));
-    }
+  @Test
+  public void testLearnMoreExist() throws InterruptedException {
+    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
+    assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), containsString("Learn More"));
+  }
 
-    @Test
-    public void testLearnMoreLink() throws InterruptedException {
-        studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-        assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
-    }
+  @Test
+  public void testLearnMoreLink() throws InterruptedException {
+    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
+    assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
+  }
 }

@@ -7,9 +7,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class StudentsPage extends PageObject {
 
+  public StudentsPage(WebDriver wd) {
+    super(wd);
+  }
+
   private String url = "https://www.wiley.com/en-us/students";
 
-  @FindBy(xpath = "/html/body/main/div[2]/div/div[1]/ul/li[2]")
+  @FindBy(xpath = "//*[@id=\"breadcrumbStyle\"]/li[2]")
   private WebElement header;
 
   @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a")
@@ -17,10 +21,6 @@ public class StudentsPage extends PageObject {
 
   @FindBy(xpath = "/html/body/main/div[2]/div/div[3]/div/p[15]/a/span/span")
   private WebElement learnMoreOfBeYorBestSectionName;
-
-  public StudentsPage(WebDriver wd) {
-    super(wd);
-  }
 
   public String url() {
     return url;
@@ -30,15 +30,15 @@ public class StudentsPage extends PageObject {
     return header.getText();
   }
 
-  public String learnMoreOfBeYorBestSectionLink() {
+  public String learnMoreOfBeYourBestSectionLink() {
     return learnMoreOfBeYorBestSectionLink.getAttribute("href");
   }
 
-  public String learnMoreOfBeYorBestSectionName() {
+  public String learnMoreOfBeYourBestSectionName() {
     return learnMoreOfBeYorBestSectionName.getText();
   }
 
-  public By learnMoreOfBeYorBestSectionNameLocator() {
-    return getLocator(learnMoreOfBeYorBestSectionName);
+  public By learnMoreOfBeYourBest() {
+    return locatorOf(learnMoreOfBeYorBestSectionName);
   }
 }

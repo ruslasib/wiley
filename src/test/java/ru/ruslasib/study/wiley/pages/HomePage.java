@@ -1,8 +1,8 @@
 package ru.ruslasib.study.wiley.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -25,11 +25,18 @@ public class HomePage extends PageObject {
         whoWeServeMenu.click();
     }
 
+    @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li/a")
+    private WebElement whoWeservedItems;
+
     @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[2]/a")
     private WebElement subjectsMenu;
 
     public String subjectsName() {
         return subjectsMenu.getText();
+    }
+
+    public void clickSubjects() {
+        subjectsMenu.click();
     }
 
     @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[4]/a")
@@ -49,12 +56,24 @@ public class HomePage extends PageObject {
         students.click();
     }
 
+    @FindBy(linkText = "Education")
+    private WebElement education;
+
+    public void clickEducation() {
+        education.click();
+    }
+
     public List<String> whoWeServeSubmenuItemsNames() {
-        List<WebElement> elements = wd.findElements(By.xpath("//*[@id=\"Level1NavNode1\"]/ul/li/a"));
+        List<WebElement> elements = wd.findElements(locatorOf(whoWeservedItems));
         List<String> elementsNames = new ArrayList<String>();
         for (WebElement element : elements) {
             elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));
         }
         return elementsNames;
+    }
+
+    public void navigateToSubjects() {
+        Actions actions = new Actions(wd);
+        actions.moveToElement(subjectsMenu).perform();
     }
 }

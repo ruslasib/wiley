@@ -16,7 +16,7 @@ public class StudentsTests extends TestBase {
   }
 
   @Test
-  public void testStudentsPageUrl() {
+  public void testPageUrl() {
     assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
   }
 
@@ -27,13 +27,13 @@ public class StudentsTests extends TestBase {
 
   @Test
   public void testLearnMoreExist() throws InterruptedException {
-    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-    assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), containsString("Learn More"));
+    studentsPage.scrollTo(studentsPage.learnMoreOfBeYourBest());
+    assertThat(studentsPage.learnMoreOfBeYourBestSectionName(), containsString("Learn More"));
   }
 
   @Test
   public void testLearnMoreLink() throws InterruptedException {
-    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-    assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
+    studentsPage.scrollTo(studentsPage.learnMoreOfBeYourBest());
+    assertThat(studentsPage.learnMoreOfBeYourBestSectionLink(), containsString("www.wileyplus.com"));
   }
 }

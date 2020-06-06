@@ -27,13 +27,13 @@ public class StudentsTests extends TestBase {
 
   @Test
   public void testLearnMoreExist() {
-    studentsPage.scrollTo(studentsPage.beYourBest.learnMore());
-    assertThat(studentsPage.beYourBest.learnMoreName(), containsString("Learn More"));
+    studentsPage.scrollTo(studentsPage.beYourBest().learnMore());
+    assertThat(studentsPage.beYourBest().learnMoreName(), containsString("Learn More"));
   }
 
   @Test
   public void testLearnMoreLink() {
-    studentsPage.scrollTo(studentsPage.beYourBest.learnMore());
-    assertThat(studentsPage.beYourBest.learnMoreLink(), containsString("www.wileyplus.com"));
+    studentsPage.scrollTo(studentsPage.beYourBest().learnMore());
+    assertThat(studentsPage.beYourBest().learnMoreLink(), containsString("www.wileyplus.com"));
   }
 }

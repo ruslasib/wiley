@@ -11,7 +11,11 @@ public class StudentsPage extends PageObject {
     super(wd);
   }
 
-  public BeYourBest beYourBest = new BeYourBest(wd);
+  private BeYourBest beYourBest = new BeYourBest(wd);
+
+  public BeYourBest beYourBest() {
+    return beYourBest;
+  }
 
   private String url = "https://www.wiley.com/en-us/students";
 

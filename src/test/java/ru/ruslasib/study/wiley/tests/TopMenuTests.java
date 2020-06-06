@@ -12,7 +12,7 @@ public class TopMenuTests extends TestBase {
 
   @Test
   public void testWhoWeServeMenuExist() {
-    assertThat(homePage.whoWeServeName(),equalTo("WHO WE SERVE"));
+    assertThat(homePage.whoWeServeName(), equalTo("WHO WE SERVE"));
   }
 
   @Test
@@ -27,8 +27,8 @@ public class TopMenuTests extends TestBase {
 
   @Test
   public void testWhoWeServeSubmenu() {
-    assertThat(homePage.whoWeServeSubmenuItemsNames().size(),equalTo(12));
+    assertThat(homePage.whoWeServeItemsNames().size(),equalTo(12));
     List<String> items = Arrays.asList("Students", "Instructors", "Book Authors", "Professionals", "Researchers", "Institutions", "Librarians", "Corporations", "Societies", "Journal Editors", "Bookstores", "Government");
-    assertThat(homePage.whoWeServeSubmenuItemsNames(), equalTo(items));
+    assertThat(homePage.whoWeServeItemsNames(), equalTo(items));
   }
 }

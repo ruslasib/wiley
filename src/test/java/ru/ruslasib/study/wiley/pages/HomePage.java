@@ -28,6 +28,15 @@ public class HomePage extends PageObject {
     @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li/a")
     private WebElement whoWeservedItems;
 
+    public List<String> whoWeServeItemsNames() {
+        List<WebElement> elements = wd.findElements(locatorOf(whoWeservedItems));
+        List<String> elementsNames = new ArrayList<String>();
+        for (WebElement element : elements) {
+            elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));
+        }
+        return elementsNames;
+    }
+
     @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[2]/a")
     private WebElement subjectsMenu;
 
@@ -61,15 +70,6 @@ public class HomePage extends PageObject {
 
     public void clickEducation() {
         education.click();
-    }
-
-    public List<String> whoWeServeSubmenuItemsNames() {
-        List<WebElement> elements = wd.findElements(locatorOf(whoWeservedItems));
-        List<String> elementsNames = new ArrayList<String>();
-        for (WebElement element : elements) {
-            elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));
-        }
-        return elementsNames;
     }
 
     public void navigateToSubjects() {

@@ -12,11 +12,15 @@ public class PageObject {
     PageFactory.initElements(wd, this);
   }
 
-  public void scrollTo(By locator) throws InterruptedException {
+  public void scrollTo(By locator) {
     Point requiredElement = wd.findElement(locator).getLocation();
     JavascriptExecutor jse = (JavascriptExecutor) wd;
     jse.executeScript("window.scrollBy(0," + (requiredElement.getY()) + ");");
-    Thread.sleep(1000);
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      ex.printStackTrace();
+    }
   }
 
   public By locatorOf(WebElement element) {

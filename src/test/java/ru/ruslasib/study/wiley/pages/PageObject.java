@@ -1,15 +1,23 @@
 package ru.ruslasib.study.wiley.pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PageObject {
+public abstract class PageObject {
 
   protected WebDriver wd;
 
   public PageObject(WebDriver wd) {
     this.wd = wd;
     PageFactory.initElements(wd, this);
+  }
+
+  @FindBy(id = "wileyLogo")
+  private WebElement logo;
+
+  public void clickLogo() {
+    logo.click();
   }
 
   public void scrollTo(By locator) {

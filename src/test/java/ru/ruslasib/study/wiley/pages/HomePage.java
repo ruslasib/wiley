@@ -76,4 +76,8 @@ public class HomePage extends PageObject {
         Actions actions = new Actions(wd);
         actions.moveToElement(subjectsMenu).perform();
     }
+
+    public String url() {
+        return wd.getCurrentUrl();
+    }
 }

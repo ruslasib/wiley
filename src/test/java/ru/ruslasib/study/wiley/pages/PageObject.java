@@ -61,4 +61,10 @@ public abstract class PageObject {
     }
     return by;
   }
+
+  public String xpathOf(WebElement suggestionsList) {
+    String[] str = suggestionsList.toString().split(" ");
+    String last = str[str.length - 1];
+    return last.substring(0, last.length() - 1);
+  }
 }

@@ -33,10 +33,10 @@ public class HomePage extends PageObject {
     }
 
     @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li/a")
-    private WebElement whoWeservedItems;
+    private WebElement whoWeserveItems;
 
     public List<String> whoWeServeItemsNames() {
-        List<WebElement> elements = wd.findElements(locatorOf(whoWeservedItems));
+        List<WebElement> elements = wd.findElements(locatorOf(whoWeserveItems));
         List<String> elementsNames = new ArrayList<String>();
         for (WebElement element : elements) {
             elementsNames.add(element.getAttribute("textContent").replace("\n", "").replace("  ", ""));

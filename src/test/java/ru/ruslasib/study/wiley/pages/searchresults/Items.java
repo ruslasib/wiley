@@ -1,5 +1,6 @@
 package ru.ruslasib.study.wiley.pages.searchresults;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,10 @@ public class Items {
 
   public Items(List<String> items) {
     this.items = items;
+  }
+
+  public Items() {
+    this.items = new ArrayList<String>();
   }
 
   public int size() {

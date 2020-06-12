@@ -21,5 +21,6 @@ public class SearchTests extends TestBase {
     String[] suggestionsItems = {"java", "java", "java", "java"};
     assertThat(javaSearchResults.suggestionsItems().size(), equalTo(4));
     assertThat(javaSearchResults.suggestionsItems(), equalTo(new Items(suggestionsItems)));
+    assertThat(javaSearchResults.productsItems().size(), equalTo(0));
   }
 }

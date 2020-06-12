@@ -1,8 +1,13 @@
 package ru.ruslasib.study.wiley.pages;
 
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.ruslasib.study.wiley.pages.models.Items;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class PageObject {
 
@@ -66,5 +71,19 @@ public abstract class PageObject {
     String[] str = suggestionsList.toString().split(" ");
     String last = str[str.length - 1];
     return last.substring(0, last.length() - 1);
+  }
+
+  @NotNull
+  protected Items getItems(WebElement webElement) {
+    try {
+      List<WebElement> elements = wd.findElements(locatorOf(webElement));
+      List<String> elementsNames = new ArrayList<String>();
+      for (WebElement element : elements) {
+        elementsNames.add(element.getText());
+      }
+      return new Items(elementsNames);
+    } catch (ArrayIndexOutOfBoundsException ex) {
+      return new Items();
+    }
   }
 }

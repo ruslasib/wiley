@@ -1,4 +1,4 @@
-package ru.ruslasib.study.wiley.pages.searchresults;
+package ru.ruslasib.study.wiley.pages.models;
 
 import java.util.ArrayList;
 import java.util.Arrays;

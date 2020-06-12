@@ -10,9 +10,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import ru.ruslasib.study.wiley.pages.search.Search;
 import ru.ruslasib.study.wiley.pages.education.EducationPage;
 import ru.ruslasib.study.wiley.pages.home.HomePage;
-import ru.ruslasib.study.wiley.pages.searchresults.JavaSearchResults;
+import ru.ruslasib.study.wiley.pages.searchresults.SearchResults;
 import ru.ruslasib.study.wiley.pages.students.StudentsPage;
 
 import java.lang.reflect.Method;
@@ -24,7 +25,8 @@ public class TestBase {
   static HomePage homePage;
   static StudentsPage studentsPage;
   static EducationPage educationPage;
-  static JavaSearchResults javaSearchResults;
+  static SearchResults searchResults;
+  static Search search;
   /**
    * operation system may be:
    * IOS
@@ -45,7 +47,8 @@ public class TestBase {
     homePage = new HomePage(wd);
     studentsPage = new StudentsPage(wd);
     educationPage = new EducationPage(wd);
-    javaSearchResults = new JavaSearchResults(wd);
+    searchResults = new SearchResults(wd);
+    search = new Search(wd);
   }
 
   @AfterSuite(alwaysRun = true)

@@ -79,6 +79,13 @@ public class HomePage extends PageObject {
         education.click();
     }
 
+    @FindBy(xpath = "//button[.='Search']")
+    private WebElement searchBtn;
+
+    public void clickSearchBtn() {
+      searchBtn.click();
+    }
+
     public void navigateToSubjects() {
         Actions actions = new Actions(wd);
         actions.moveToElement(subjectsMenu).perform();
@@ -87,4 +94,5 @@ public class HomePage extends PageObject {
     public String url() {
         return wd.getCurrentUrl();
     }
+
 }

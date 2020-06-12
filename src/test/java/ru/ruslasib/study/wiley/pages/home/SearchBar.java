@@ -11,7 +11,7 @@ public class SearchBar extends PageObject {
     super(wd);
   }
 
-  @FindBy(xpath = "//*[.='Search']")
+  @FindBy(xpath = "//*[.='search']")
   private WebElement searchBtn;
 
   public void clickSearchBtn() {

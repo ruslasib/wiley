@@ -25,7 +25,8 @@ public class Items {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Items items1 = (Items) o;
-    System.out.println("Expected:\t" + items + "\n" + "but was:\t" + items1);
-    return Objects.equals(items, items1.items);
+    boolean isEqual = Objects.equals(items, items1.items);
+    if (! isEqual) System.out.println("Expected:\t" + items + "\n" + "but was:\t" + items1.items);
+    return isEqual;
   }
 }

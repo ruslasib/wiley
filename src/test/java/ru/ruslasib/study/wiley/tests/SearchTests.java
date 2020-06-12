@@ -3,9 +3,6 @@ package ru.ruslasib.study.wiley.tests;
 import org.testng.annotations.Test;
 import ru.ruslasib.study.wiley.pages.searchresults.Items;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

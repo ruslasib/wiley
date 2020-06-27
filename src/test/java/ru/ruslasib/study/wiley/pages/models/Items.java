@@ -9,6 +9,10 @@ public class Items {
 
   private List<String> items;
 
+  public List<String> list() {
+    return items;
+  }
+
   public Items(String[] items) {
     this.items = Arrays.asList(items);
   }

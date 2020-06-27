@@ -11,7 +11,7 @@ public class SearchBar extends PageObject {
     super(wd);
   }
 
-  @FindBy(xpath = "//*[.='search']")
+  @FindBy(xpath = "//*[.='Search']")
   private WebElement searchBtn;
 
   public void clickSearchBtn() {
@@ -22,6 +22,7 @@ public class SearchBar extends PageObject {
   private WebElement inputField;
 
   public void inputSerchRequest(String input) {
+    inputField.clear();
     inputField.sendKeys(input);
   }
 }

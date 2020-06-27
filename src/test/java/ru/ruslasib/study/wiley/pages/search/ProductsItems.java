@@ -19,11 +19,11 @@ public class ProductsItems extends PageObject {
     return getItems(names);
   }
 
-  @FindBy(xpath = "//*[@id=\"tabContentStyle\"]/div/div/div/div[6]")
+  @FindBy(xpath = "//*[@id=\"eBundlePlpTabMainTabPanel\"]/div/div[1]/div/div/div[last()]")
+
   private WebElement addtoCartList;
 
   public Items addtoCartList() {
-    System.out.println(addtoCartList.getText());
     return getItems(addtoCartList);
   }
 }

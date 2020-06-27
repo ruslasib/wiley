@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import ru.ruslasib.study.wiley.pages.search.Search;
 import ru.ruslasib.study.wiley.pages.education.EducationPage;
 import ru.ruslasib.study.wiley.pages.home.HomePage;
@@ -41,14 +38,18 @@ public class TestBase {
     wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
-    // close modal window
-    wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
-    Thread.sleep(2000);
+    closeModalWindow();
     homePage = new HomePage(wd);
     studentsPage = new StudentsPage(wd);
     educationPage = new EducationPage(wd);
     searchResults = new SearchResults(wd);
     search = new Search(wd);
+    homePage.clickLogo();
+  }
+
+  private static void closeModalWindow() throws InterruptedException {
+    wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
+    Thread.sleep(2000);
   }
 
   @AfterSuite(alwaysRun = true)
@@ -70,6 +71,7 @@ public class TestBase {
 
   @BeforeMethod
   public void logStart(Method m) {
+    homePage.clickLogo();
     log.info("Start test " + m.getName());
   }
 

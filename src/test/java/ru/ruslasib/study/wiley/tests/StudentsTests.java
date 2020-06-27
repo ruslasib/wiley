@@ -1,6 +1,6 @@
 package ru.ruslasib.study.wiley.tests;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StudentsTests extends TestBase {
 
-  @BeforeClass
+  @BeforeMethod
   public static void prepare() {
     homePage.clickWhoWeServe();
     homePage.clickStudents();

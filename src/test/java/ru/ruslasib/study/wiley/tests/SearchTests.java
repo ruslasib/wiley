@@ -31,9 +31,13 @@ public class SearchTests extends TestBase {
   public void testJavaSearch() {
     homePage.searchBar().inputSerchRequest("java");
     homePage.clickSearchBtn();
-    ProductsItems productsItems = search.productsItems();
-    assertThat(productsItems.names().list().iterator().next().toLowerCase(), containsString("java"));
-    assertThat(productsItems.names().size(), equalTo(10));
-    assertThat(productsItems.addtoCartList().size(), equalTo(10));
+    ProductsItems productsItemsNames = search.productsItems();
+    assertThat(productsItemsNames.names().list().iterator().next().toLowerCase(), containsString("java"));
+    assertThat(productsItemsNames.names().size(), equalTo(10));
+    assertThat(productsItemsNames.addtoCartList().size(), equalTo(10));
+
+    homePage.searchBar().inputSerchRequest("java");
+    homePage.clickSearchBtn();
+    assertThat(search.productsItems().names(), equalTo(productsItemsNames.names()));
   }
 }

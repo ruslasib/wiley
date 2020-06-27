@@ -69,9 +69,13 @@ public class TestBase {
     return new ChromeDriver();
   }
 
+  @BeforeClass
+  public void gotoHomePage() {
+    homePage.clickLogo();
+  }
+
   @BeforeMethod
   public void logStart(Method m) {
-    homePage.clickLogo();
     log.info("Start test " + m.getName());
   }
 

@@ -14,6 +14,7 @@ import ru.ruslasib.study.wiley.pages.searchresults.SearchResults;
 import ru.ruslasib.study.wiley.pages.students.StudentsPage;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -75,8 +76,8 @@ public class TestBase {
   }
 
   @BeforeMethod
-  public void logStart(Method m) {
-    log.info("Start test " + m.getName());
+  public void logStart(Method m, Object[] p) {
+    log.info("Start test " + m.getName() + " with parameters " + Arrays.asList(p));
   }
 
   @AfterMethod(alwaysRun = true)

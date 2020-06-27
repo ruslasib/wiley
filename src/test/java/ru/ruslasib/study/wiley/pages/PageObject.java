@@ -52,7 +52,6 @@ public abstract class PageObject {
       by = By.className(value);
     } else if (selector.equals("xpath")) {
       by = By.xpath(value);
-      System.out.println(by);
     } else if (selector.equals("cssSelector")) {
       by = By.cssSelector(value);
     } else if (selector.equals("linkText")) {

@@ -1,6 +1,6 @@
 package ru.ruslasib.study.wiley.tests;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -9,15 +9,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StudentsTests extends TestBase {
 
-  @BeforeClass
+  @BeforeMethod
   public static void prepare() {
     homePage.clickWhoWeServe();
     homePage.clickStudents();
   }
 
   @Test
-  public void testStudentsPageUrl() {
-    assertThat(wd.getCurrentUrl(), equalTo(studentsPage.url()));
+  public void testPageUrl() {
+    assertThat(studentsPage.url(), equalTo("https://www.wiley.com/en-us/students"));
   }
 
   @Test
@@ -26,14 +26,14 @@ public class StudentsTests extends TestBase {
   }
 
   @Test
-  public void testLearnMoreExist() throws InterruptedException {
-    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-    assertThat(studentsPage.learnMoreOfBeYorBestSectionName(), containsString("Learn More"));
+  public void testLearnMoreExist() {
+    studentsPage.scrollTo(studentsPage.beYourBest().learnMore());
+    assertThat(studentsPage.beYourBest().learnMoreName(), containsString("Learn More"));
   }
 
   @Test
-  public void testLearnMoreLink() throws InterruptedException {
-    studentsPage.scrollTo(studentsPage.learnMoreOfBeYorBestSectionNameLocator());
-    assertThat(studentsPage.learnMoreOfBeYorBestSectionLink(), containsString("www.wileyplus.com"));
+  public void testLearnMoreLink() {
+    studentsPage.scrollTo(studentsPage.beYourBest().learnMore());
+    assertThat(studentsPage.beYourBest().learnMoreLink(), containsString("www.wileyplus.com"));
   }
 }

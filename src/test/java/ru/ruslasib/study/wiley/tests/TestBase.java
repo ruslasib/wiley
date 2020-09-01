@@ -6,14 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import ru.ruslasib.study.wiley.pages.HomePage;
-import ru.ruslasib.study.wiley.pages.StudentsPage;
+import org.testng.annotations.*;
+import ru.ruslasib.study.wiley.pages.search.Search;
+import ru.ruslasib.study.wiley.pages.education.EducationPage;
+import ru.ruslasib.study.wiley.pages.home.HomePage;
+import ru.ruslasib.study.wiley.pages.searchresults.SearchResults;
+import ru.ruslasib.study.wiley.pages.students.StudentsPage;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +22,9 @@ public class TestBase {
   static WebDriver wd;
   static HomePage homePage;
   static StudentsPage studentsPage;
+  static EducationPage educationPage;
+  static SearchResults searchResults;
+  static Search search;
   /**
    * operation system may be:
    * IOS
@@ -35,11 +39,18 @@ public class TestBase {
     wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("https://www.wiley.com/en-us");
-    // close modal window
-    wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
-    Thread.sleep(2000);
+    closeModalWindow();
     homePage = new HomePage(wd);
     studentsPage = new StudentsPage(wd);
+    educationPage = new EducationPage(wd);
+    searchResults = new SearchResults(wd);
+    search = new Search(wd);
+    homePage.clickLogo();
+  }
+
+  private static void closeModalWindow() throws InterruptedException {
+    wd.findElement(By.xpath("/html/body/main/div[1]/div/div/form/div[3]/button[2]")).click();
+    Thread.sleep(2000);
   }
 
   @AfterSuite(alwaysRun = true)
@@ -59,9 +70,14 @@ public class TestBase {
     return new ChromeDriver();
   }
 
+  @BeforeClass
+  public void gotoHomePage() {
+    homePage.clickLogo();
+  }
+
   @BeforeMethod
-  public void logStart(Method m) {
-    log.info("Start test " + m.getName());
+  public void logStart(Method m, Object[] p) {
+    log.info("Start test " + m.getName() + " with parameters " + Arrays.asList(p));
   }
 
   @AfterMethod(alwaysRun = true)

@@ -12,18 +12,25 @@ public class ProductsItems extends PageObject {
     super(wd);
   }
 
-  @FindBy(xpath = "//*[@id=\"search-result-page-row\"]/div[3]/div/div[3]/div/div/div/div[3]/section/div[2]/h3/a")
-  WebElement names;
+  @FindBy(xpath = "//div[@class='products-list']/section/div/h3")
+  private WebElement names;
 
   public Items names() {
     return getItems(names);
   }
 
-  @FindBy(xpath = "//*[@id=\"eBundlePlpTabMainTabPanel\"]/div/div[1]/div/div/div[last()]")
+  @FindBy(xpath = "//div[@class='products-list']//section//span[@class='pr-not-available']")
+  // "//*[@id=\"eBundlePlpTabMainTabPanel\"]/div/div[1]/div/div/div[last()]"
+  private WebElement productNotAvailable;
 
-  private WebElement addtoCartList;
+  public Items productNotAvailable() {
+    return getItems(productNotAvailable);
+  }
 
-  public Items addtoCartList() {
-    return getItems(addtoCartList);
+  @FindBy(xpath = "//*[contains(text(), 'cart')]")
+  private WebElement addToCart;
+
+  public Items addToCart() {
+    return getItems(addToCart);
   }
 }

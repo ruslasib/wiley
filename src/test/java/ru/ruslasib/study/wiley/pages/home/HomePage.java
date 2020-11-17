@@ -21,7 +21,7 @@ public class HomePage extends PageObject {
         return searchBar;
     }
 
-    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[1]")
+    @FindBy(css = "#main-header-navbar li:nth-child(1)")
     private WebElement whoWeServeMenu;
 
     public String whoWeServeName() {
@@ -44,7 +44,7 @@ public class HomePage extends PageObject {
         return elementsNames;
     }
 
-    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[2]/a")
+    @FindBy(css = "[href $=subjects]")
     private WebElement subjectsMenu;
 
     public String subjectsName() {
@@ -55,14 +55,14 @@ public class HomePage extends PageObject {
         subjectsMenu.click();
     }
 
-    @FindBy(xpath = "//*[@id=\"main-header-navbar\"]/ul[1]/li[4]/a")
+    @FindBy(css = "#main-header-navbar > ul:first-child > li:nth-child(4)")
     private WebElement aboutMenu;
 
     public String aboutName() {
         return aboutMenu.getText();
     }
 
-    @FindBy(xpath = "//*[@id=\"Level1NavNode1\"]/ul/li")
+    @FindBy(xpath = ".Level1NavNode1 > ul > li")
     private WebElement whoWeServeSubmenuItems;
 
     @FindBy(linkText = "Students")
